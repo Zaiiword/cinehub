@@ -27,5 +27,6 @@ public class Movie {
     private Long poster;
     private String genres;
     private Date released;
+    private String productionCountry;
 
 }
