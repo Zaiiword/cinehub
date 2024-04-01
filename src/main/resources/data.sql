@@ -12,15 +12,15 @@ VALUES
 ('Anderson', 'Emily', 'emily.anderson@example.com', 'Italian', 'password2223', 'user', '2022-01-19', '2022-01-20', 'profile_picture_url10');
 
 
-INSERT INTO movie (name, duration, rating, directors, actors, synopsis, trailer, poster, genres, released)
-VALUES 
-('Movie 1', 120, 5, 'Director 1', 'Actor 1', 'Synopsis 1', 'Trailer URL 1', 1, 'Genre 1', '2022-01-01'),
-('Movie 2', 90, 4, 'Director 2', 'Actor 2', 'Synopsis 2', 'Trailer URL 2', 2, 'Genre 2', '2022-01-02'),
-('Movie 3', 110, 3, 'Director 3', 'Actor 3', 'Synopsis 3', 'Trailer URL 3', 3, 'Genre 3', '2022-01-03'),
-('Movie 4', 100, 2, 'Director 4', 'Actor 4', 'Synopsis 4', 'Trailer URL 4', 4, 'Genre 4', '2022-01-04'),
-('Movie 5', 130, 1, 'Director 5', 'Actor 5', 'Synopsis 5', 'Trailer URL 5', 5, 'Genre 5', '2022-01-05'),
-('Movie 6', 140, 5, 'Director 6', 'Actor 6', 'Synopsis 6', 'Trailer URL 6', 6, 'Genre 6', '2022-01-06'),
-('Movie 7', 150, 4, 'Director 7', 'Actor 7', 'Synopsis 7', 'Trailer URL 7', 7, 'Genre 7', '2022-01-07'),
-('Movie 8', 160, 3, 'Director 8', 'Actor 8', 'Synopsis 8', 'Trailer URL 8', 8, 'Genre 8', '2022-01-08'),
-('Movie 9', 170, 2, 'Director 9', 'Actor 9', 'Synopsis 9', 'Trailer URL 9', 9, 'Genre 9', '2022-01-09'),
-('Movie 10', 180, 1, 'Director 10', 'Actor 10', 'Synopsis 10', 'Trailer URL 10', 10, 'Genre 10', '2022-01-10');
+INSERT INTO movie (name, duration, rating, directors, actors, synopsis, trailer, poster, genres, released, production_country, imdb_id)
+VALUES
+('Dune', 155, 5, 'Denis Villeneuve', 'Timothée Chalamet, Rebecca Ferguson, Oscar Isaac', 'A noble family becomes embroiled in a war for control over the galaxy s most valuable asset while its heir becomes troubled by visions of a dark future.', 'https://www.youtube.com/watch?v=gHt8tCHbB2M&pp=ygUFZHVuZSA%3D', 'https://fr.web.img5.acsta.net/c_310_420/pictures/21/08/10/12/20/4633954.jpg', 'Sci-Fi, Adventure', '2020-09-15', 'USA', 'tt1160419'),
+('Dune: Part Two', 165, 3, 'Denis Villeneuve', 'Timothée Chalamet, Zendaya, Rebecca Ferguson', 'The journey of Paul Atreides continues as he unites with Chani and the Fremen while facing new enemies in a quest to change the future.', 'https://www.youtube.com/watch?v=kF1WyiTZFTk', 'https://fr.web.img2.acsta.net/c_310_420/pictures/24/01/26/10/18/5392835.jpg', 'Sci-Fi, Adventure', '2023-10-20', 'USA', 'tt1272436'),
+
+('Oppenheimer', 150, 4, 'Christopher Nolan', 'Cillian Murphy, Emily Blunt, Robert Downey Jr.', 'The story of J. Robert Oppenheimer and his role in the development of the atomic bomb.', 'https://www.youtube.com/watch?v=uYPbbksJxIg&pp=ygUTb3BwZW5oZWltZXIgdHJhaWxlcg%3D%3D', 'https://fr.web.img3.acsta.net/c_310_420/pictures/23/05/26/16/52/2793170.jpg', 'Biography, Drama', '2023-07-21', 'USA', 'tt11291274'),
+
+('The Batman', 176, 3, 'Matt Reeves', 'Robert Pattinson, Zoë Kravitz, Paul Dano', 'In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.', 'https://www.youtube.com/watch?v=mqqft2x_Aa4&pp=ygUSdGhlIGJhdG1hbiB0cmFpbGVy', 'https://fr.web.img3.acsta.net/c_310_420/pictures/22/02/16/17/42/3125788.jpg', 'Action, Crime, Drama', '2022-03-04', 'USA', 'tt1877830'),
+
+('Joker', 122, 5, 'Todd Phillips', 'Joaquin Phoenix, Robert De Niro, Zazie Beetz', 'In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime.', 'https://www.youtube.com/watch?v=t433PEQGErc', 'https://fr.web.img4.acsta.net/c_310_420/pictures/19/09/03/12/02/4765874.jpg', 'Crime, Drama, Thriller', '2019-10-04', 'USA', 'tt7286456'),
+
+('Interstellar', 169, 4, 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway, Jessica Chastain', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity s survival.', 'https://www.youtube.com/watch?v=zSWdZVtXT7E', 'https://www.allocine.fr/video/player_gen_cmedia=19548515&cfilm=114782.html', 'Adventure, Drama, Sci-Fi', '2014-11-07', 'USA, UK', 'tt0816692');

@@ -2,6 +2,7 @@ package fr.but3.cinehub.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,14 +20,16 @@ public class Movie {
     private Long id;
     private String name;
     private Integer duration;
-    private Long rating;
+    private int rating;
     private String directors;
     private String actors;
     private String synopsis;
     private String trailer;
-    private Long poster;
+    private String poster;
     private String genres;
     private Date released;
     private String productionCountry;
+    @Column(name = "imdb_id")
+    private String imdbId;
 
 }

@@ -8,8 +8,8 @@ import lombok.Data;
 public class MovieSummary {
     private Long id;
     private String name;
-    private String directors;
     private String genres;
     private Date released;
-
+    private String poster;
+    private int rating;
 }
