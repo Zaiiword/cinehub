@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import fr.but3.cinehub.entity.Movie;
 import fr.but3.cinehub.entity.MovieSummary;
 import fr.but3.cinehub.repository.MovieRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
