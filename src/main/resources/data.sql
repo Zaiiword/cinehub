@@ -29,7 +29,7 @@ VALUES
 INSERT INTO review (user_id, movie_id, content, rating, dislikes, likes) 
 VALUES 
 (1, 1, 'Great movie', 5, 0, 0),
-(2, 1, 'Awesome movie', 4, 0, 0),
+(2, 1, 'Awesome movie', 4.5, 0, 0),
 (1, 1, 'Great movie', 5, 0, 0),
 (2, 1, 'Awesome movie', 4, 0, 0),
 (3, 1, 'Epic storytelling', 5, 0, 0), 

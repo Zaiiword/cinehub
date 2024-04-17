@@ -24,7 +24,7 @@ public class Review {
     @JsonIgnore
     private Movie movie;
     private String content;
-    private int rating;
+    private float rating;
     private int dislikes;
     private int likes;
 }
