@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
-
+import fr.but3.cinehub.service.UserDetailService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class JwtTokenProvider {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailService userDetailsService;
 
     private String secretKey = "secret";
 
@@ -55,7 +55,7 @@ public class JwtTokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    private String getUsername(String token) {
+    public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 }

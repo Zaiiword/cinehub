@@ -11,6 +11,13 @@ import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Data
@@ -44,5 +51,20 @@ public class User {
 
     @Column(name = "profile_picture")
     private String profilePicture;
+
+    public UserDetails toUserDetails() {
+
+        List<GrantedAuthority> authorities = Stream.of(role)
+            .map(r -> new SimpleGrantedAuthority(r))
+            .collect(Collectors.toList());
+    
+        return new org.springframework.security.core.userdetails.User(
+            getMail(),
+            getPassword(),
+            true,
+            true, true, true,
+            authorities
+        );
+    }
 
 }

@@ -41,7 +41,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication auth) throws IOException {
         String token = JWT.create()
-                .withSubject(((User) auth.getPrincipal()).getName())
+                .withSubject(((User) auth.getPrincipal()).getMail())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 864_000_000)) // 10 days
                 .sign(Algorithm.HMAC512("secret")); // Utilise un secret plus sûr dans la production
 

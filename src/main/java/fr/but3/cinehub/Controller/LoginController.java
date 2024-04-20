@@ -40,7 +40,13 @@ public class LoginController {
             String jwt = jwtTokenProvider.createToken(authentication.getName(), authentication.getAuthorities());
             return ResponseEntity.ok(new JwtResponse(jwt));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Invalid username/password supplied");
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                    loginDto.getUsername(), 
+                    loginDto.getPassword()
+                )
+            );
+            return ResponseEntity.badRequest().body("Invalid username/password supplied"+ authentication);
         }
     }
 }
