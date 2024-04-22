@@ -100,9 +100,35 @@ public class MovieController {
         review.setRating(reviewRequest.getRating());
 
         reviewRepository.save(review);
+
+        Double averageRating = movieRepository.calculateAverageRating(movie.getId()).orElse(0.0);
+        movie.setRating(averageRating);
+        movieRepository.save(movie);
         return new ResponseEntity<Review>(review, HttpStatus.CREATED);
         
     }
+
+
+    @PatchMapping("/{id}/review/{idReview}")
+    public ResponseEntity<Review> incrementReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview) {
+        Optional<Movie> movieOptional = movieRepository.findById(id);
+        if (!movieOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Movie movie = movieOptional.get();
+        Optional<Review> reviewOptional = reviewRepository.findById(idReview);
+        if (!reviewOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Review review = reviewOptional.get();
+        review.setLikes(review.getLikes() + 1);
+
+        reviewRepository.save(review);
+        return new ResponseEntity<>(review, HttpStatus.OK);
+    }
+
 
     @PatchMapping("/{id}")
     public ResponseEntity<Movie> updateMovie(@PathVariable("id") Long id, @RequestBody Movie updatedMovie) {

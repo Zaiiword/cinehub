@@ -11,5 +11,5 @@ public class MovieSummary {
     private String genres;
     private Date released;
     private String poster;
-    private int rating;
+    private double rating;
 }

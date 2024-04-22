@@ -48,3 +48,16 @@ VALUES
 (6, 6, 'Mind-bending and emotional', 5, 0, 0),
 (7, 6, 'Visually stunning', 4, 0, 0),
 (8, 6, 'Conceptually ambitious', 4, 0, 0);
+
+
+UPDATE movie m
+SET rating = (
+    SELECT AVG(r.rating)
+    FROM review r
+    WHERE r.movie_id = m.id
+)
+WHERE EXISTS (
+    SELECT 1
+    FROM review r
+    WHERE r.movie_id = m.id
+);

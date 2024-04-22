@@ -22,7 +22,7 @@ public class Movie {
     private Long id;
     private String name;
     private Integer duration;
-    private int rating;
+    private double rating;
     private String directors;
     private String actors;
     private String synopsis;
