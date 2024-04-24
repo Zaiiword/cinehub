@@ -46,6 +46,12 @@ public class MovieController {
         return new ResponseEntity<>(CreneauDisponibles, HttpStatus.OK);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<Movie>> searchMovies(@RequestParam("q") String query) {
+        List<Movie> movies = movieRepository.findByNameContainingIgnoreCase(query);
+        return new ResponseEntity<>(movies, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Movie> getById(@PathVariable("id") Long id) {
         Optional<Movie> CreneauDisponible = movieRepository.findById(id);
