@@ -19,6 +19,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+
     @GetMapping("/{id}")
     public Optional<User> getUser(@PathVariable Long id) {
         return userRepository.findById(id);
@@ -37,6 +38,12 @@ public class UserController {
         return userRepository.save(user);
     }
 
+    @GetMapping("/me")
+    public Optional<User> getCurrentUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findByMail(username);
+    }
+
 
     @GetMapping("/isConnected")
     public boolean isConnected() {
@@ -48,8 +55,14 @@ public class UserController {
     public User updateUser(@PathVariable Long id, @RequestBody User userUpdates) {
         return userRepository.findById(id)
             .map(user -> {
-                // update fields from userUpdates
-                // ...
+                user.setName(userUpdates.getName());
+                user.setFirstName(userUpdates.getFirstName());
+                user.setMail(userUpdates.getMail());
+                user.setLanguage(userUpdates.getLanguage());
+                user.setPassword(userUpdates.getPassword());
+                user.setRole(userUpdates.getRole());
+                user.setLastConnection(userUpdates.getLastConnection());
+                user.setProfilePicture(userUpdates.getProfilePicture());
                 return userRepository.save(user);
             })
             .orElseGet(() -> {

@@ -12,18 +12,15 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-import fr.but3.cinehub.repository.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final UserRepository userRepo;
     private final JwtTokenFilter jwtTokenFilter;
 
-    public SecurityConfig(UserRepository userRepo, JwtTokenFilter jwtTokenFilter) {
-        this.userRepo = userRepo;
+    public SecurityConfig( JwtTokenFilter jwtTokenFilter) {
         this.jwtTokenFilter = jwtTokenFilter;
     }
 
@@ -46,29 +43,13 @@ public class SecurityConfig {
                 })
             .and()
             .authorizeRequests()
-                .requestMatchers("/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/author/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/author/search").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/book/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/book/search").permitAll()
+                .requestMatchers("/login","/user").permitAll()
                 .anyRequest().authenticated()
             .and()
             .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
-
-    // @Bean
-    // public CorsFilter corsFilter() {
-    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    //     CorsConfiguration config = new CorsConfiguration();
-    //     config.setAllowCredentials(true);
-    //     config.addAllowedOrigin("*");
-    //     config.addAllowedHeader("*");
-    //     config.addAllowedMethod("*");
-    //     source.registerCorsConfiguration("/**", config);
-    //     return new CorsFilter(source);
-    // }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

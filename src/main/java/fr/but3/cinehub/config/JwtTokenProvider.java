@@ -23,7 +23,7 @@ public class JwtTokenProvider {
     @Autowired
     private UserDetailService userDetailsService;
 
-    private String secretKey = "secret";
+    private String secretKey = "clement";
 
     public String createToken(String username, Collection<? extends GrantedAuthority> authorities) {
         Claims claims = Jwts.claims().setSubject(username);
@@ -42,6 +42,7 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token) {
+        System.out.println(token);
         try {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
