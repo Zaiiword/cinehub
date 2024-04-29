@@ -116,7 +116,7 @@ public class MovieController {
 
 
     @PatchMapping("/{id}/review/{idReview}")
-    public ResponseEntity<Review> incrementReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview) {
+    public ResponseEntity<Review> incrementReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview, @RequestBody User user) {
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (!movieOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -129,7 +129,13 @@ public class MovieController {
         }
 
         Review review = reviewOptional.get();
-        review.setLikes(review.getLikes() + 1);
+        System.out.println("AAAAAAAAAAAAAAAA");
+        System.out.println(user);
+        // Check if the user is already in the likedBy list
+        if (!review.getLikedBy().contains(user)) {
+            // If not, add the user to the list
+            review.getLikedBy().add(user);
+        }
 
         reviewRepository.save(review);
         return new ResponseEntity<>(review, HttpStatus.OK);

@@ -26,28 +26,28 @@ VALUES
 
 ('Interstellar', 169, 4, 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway, Jessica Chastain', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity s survival.', 'https://www.youtube.com/embed/zSWdZVtXT7E', 'https://fr.web.img5.acsta.net/c_310_420/pictures/14/09/24/12/08/158828.jpg', 'Adventure, Drama, Sci-Fi', '2014-11-07', 'USA, UK', 'tt0816692');
 
-INSERT INTO review (user_id, movie_id, content, rating, dislikes, likes) 
+INSERT INTO review (user_id, movie_id, content, rating) 
 VALUES 
-(1, 1, 'Great movie', 5, 0, 0),
-(2, 1, 'Awesome movie', 4.5, 0, 0),
-(1, 1, 'Great movie', 5, 0, 0),
-(2, 1, 'Awesome movie', 4, 0, 0),
-(3, 1, 'Epic storytelling', 5, 0, 0), 
-(4, 2, 'Mind-blowing sequel', 5, 0, 0),
-(5, 2, 'A worthy continuation', 4, 0, 0),
-(6, 2, 'Disappointing compared to the first', 3, 0, 0),
-(7, 3, 'Intense and gripping', 4, 0, 0),
-(8, 3, 'Intriguing portrayal of Oppenheimer', 4, 0, 0),
-(9, 3, 'Slow pacing, but worth it', 3, 0, 0),
-(10, 4, 'Dark and gritty, a must-watch', 5, 0, 0),
-(1, 4, 'Solid performance from Pattinson', 4, 0, 0),
-(2, 4, 'Expected more from the storyline', 3, 0, 0),
-(3, 5, 'Joaquin Phoenix is exceptional', 5, 0, 0),
-(4, 5, 'Disturbing yet captivating', 5, 0, 0),
-(5, 5, 'Haunting portrayal of a descent into madness', 4, 0, 0),
-(6, 6, 'Mind-bending and emotional', 5, 0, 0),
-(7, 6, 'Visually stunning', 4, 0, 0),
-(8, 6, 'Conceptually ambitious', 4, 0, 0);
+(1, 1, 'Great movie', 5),
+(2, 1, 'Awesome movie', 4.5),
+(1, 1, 'Great movie', 5),
+(2, 1, 'Awesome movie', 4),
+(3, 1, 'Epic storytelling', 5), 
+(4, 2, 'Mind-blowing sequel', 5),
+(5, 2, 'A worthy continuation', 4),
+(6, 2, 'Disappointing compared to the first', 3),
+(7, 3, 'Intense and gripping', 4),
+(8, 3, 'Intriguing portrayal of Oppenheimer', 4),
+(9, 3, 'Slow pacing, but worth it', 3),
+(10, 4, 'Dark and gritty, a must-watch', 5),
+(1, 4, 'Solid performance from Pattinson', 4),
+(2, 4, 'Expected more from the storyline', 3),
+(3, 5, 'Joaquin Phoenix is exceptional', 5),
+(4, 5, 'Disturbing yet captivating', 5),
+(5, 5, 'Haunting portrayal of a descent into madness', 4),
+(6, 6, 'Mind-bending and emotional', 5),
+(7, 6, 'Visually stunning', 4),
+(8, 6, 'Conceptually ambitious', 4);
 
 
 UPDATE movie m
