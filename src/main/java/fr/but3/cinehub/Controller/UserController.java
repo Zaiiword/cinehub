@@ -1,10 +1,14 @@
 package fr.but3.cinehub.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import fr.but3.cinehub.entity.RegisterUserDto;
 import fr.but3.cinehub.entity.User;
 import fr.but3.cinehub.entity.UserSummary;
 import fr.but3.cinehub.repository.UserRepository;
@@ -19,6 +23,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/{id}")
     public Optional<User> getUser(@PathVariable Long id) {
@@ -33,9 +39,19 @@ public class UserController {
         return userSummary;
     }
 
-    @PostMapping("/")
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+    @PostMapping("/register")
+    public ResponseEntity<User> createUser(@RequestBody RegisterUserDto registerUserDto) {
+        User user = new User();
+        user.setName(registerUserDto.getName());
+        user.setFirstName(registerUserDto.getFirstName());
+        user.setMail(registerUserDto.getMail());
+        user.setLanguage(registerUserDto.getLanguage());
+        user.setPassword(bCryptPasswordEncoder.encode(registerUserDto.getPassword()));
+        user.setRole("admin");
+
+        User savedUser = userRepository.save(user);
+        System.out.println(savedUser);
+        return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/me")

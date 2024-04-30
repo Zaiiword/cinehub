@@ -43,7 +43,7 @@ public class SecurityConfig {
                 })
             .and()
             .authorizeRequests()
-                .requestMatchers("/login","/user").permitAll()
+                .requestMatchers("/user/register","/login").permitAll()
                 .anyRequest().authenticated()
             .and()
             .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

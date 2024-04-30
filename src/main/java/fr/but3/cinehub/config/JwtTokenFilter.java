@@ -35,6 +35,14 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain chain)
             throws ServletException, IOException {
+
+                String path = request.getRequestURI();
+                System.out.println(path+"AHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                if (path != null && (path.equals("/user/register") || path.equals("/login"))) {
+                    chain.doFilter(request, response);
+                    return;
+                }
+            
         // Get authorization header and validate
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (header == null || header.isEmpty() || !header.startsWith("Bearer ")) {
