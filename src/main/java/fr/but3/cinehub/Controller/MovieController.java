@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -116,25 +117,24 @@ public class MovieController {
 
 
     @PatchMapping("/{id}/review/{idReview}")
-    public ResponseEntity<Review> incrementReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview, @RequestBody User user) {
+    public ResponseEntity<Review> incrementReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview, @RequestBody Optional<User> user) {
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (!movieOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        Movie movie = movieOptional.get();
         Optional<Review> reviewOptional = reviewRepository.findById(idReview);
         if (!reviewOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         Review review = reviewOptional.get();
-        System.out.println("AAAAAAAAAAAAAAAA");
-        System.out.println(user);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        user = userRepository.findByMail(username);
         // Check if the user is already in the likedBy list
-        if (!review.getLikedBy().contains(user)) {
+        if (!review.getLikedBy().contains(user.orElse(null))) {
             // If not, add the user to the list
-            review.getLikedBy().add(user);
+            review.getLikedBy().add(user.orElse(null));
         }
 
         reviewRepository.save(review);
