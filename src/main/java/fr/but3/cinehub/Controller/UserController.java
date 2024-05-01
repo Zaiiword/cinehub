@@ -67,7 +67,7 @@ public class UserController {
     }
 
     @PostMapping("/watchlist/{id}")
-    public ResponseEntity<?> addToWatchlist(@PathVariable Long id) {
+    public ResponseEntity<?> toggleToWatchlist(@PathVariable Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         User currentUser = userRepository.findByMail(currentUserName).orElse(null);
@@ -83,7 +83,11 @@ public class UserController {
 
         Movie movie = optionalMovie.get();
 
-        if (!currentUser.getWatchlist().contains(movie)) {
+        if (currentUser.getWatchlist().contains(movie)) {
+            // If the movie is already in the watchlist, remove it
+            currentUser.getWatchlist().remove(movie);
+        } else {
+            // If the movie is not in the watchlist, add it
             currentUser.getWatchlist().add(movie);
         }
         userRepository.save(currentUser);
