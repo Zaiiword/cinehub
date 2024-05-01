@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.but3.cinehub.entity.Genre;
 import fr.but3.cinehub.entity.Movie;
 import fr.but3.cinehub.entity.MovieSummary;
 import fr.but3.cinehub.entity.Review;
 import fr.but3.cinehub.entity.ReviewRequest;
 import fr.but3.cinehub.entity.User;
+import fr.but3.cinehub.repository.GenreRepository;
 import fr.but3.cinehub.repository.MovieRepository;
 import fr.but3.cinehub.repository.ReviewRepository;
 import fr.but3.cinehub.repository.UserRepository;
@@ -40,6 +42,9 @@ public class MovieController {
 
     @Autowired
     ReviewRepository reviewRepository;
+
+    @Autowired
+    GenreRepository genreRepository;
 
     @GetMapping("")
     public ResponseEntity<List<Movie>> getAll(){
@@ -164,5 +169,21 @@ public class MovieController {
         return new ResponseEntity<>(existingMovie, HttpStatus.OK);
     }
 
-    
+    @GetMapping("/genres")
+    public ResponseEntity<List<Genre>> getAllGenres() {
+        List<Genre> genres = (List<Genre>) genreRepository.findAll();
+        return new ResponseEntity<>(genres, HttpStatus.OK);
+    }
+
+    // not used to calculate in the client side
+    @GetMapping("/genre/{genreId}")
+    public ResponseEntity<List<Movie>> getMoviesByGenre(@PathVariable Long genreId) {
+        Optional<Genre> optionalGenre = genreRepository.findById(genreId);
+        if (optionalGenre == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Genre genre = optionalGenre.get();
+        return new ResponseEntity<>(genre.getMovies(), HttpStatus.OK);
+    }
 }

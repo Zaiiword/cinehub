@@ -8,6 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -28,7 +31,13 @@ public class Movie {
     private String synopsis;
     private String trailer;
     private String poster;
-    private String genres;
+    @ManyToMany
+    @JoinTable(
+        name = "movie_genre",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genre> genres;
     private Date released;
     private String productionCountry;
     @Column(name = "imdb_id")
