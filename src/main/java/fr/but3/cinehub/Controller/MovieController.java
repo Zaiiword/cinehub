@@ -117,7 +117,7 @@ public class MovieController {
 
 
     @PatchMapping("/{id}/review/{idReview}")
-    public ResponseEntity<Review> incrementReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview, @RequestBody Optional<User> user) {
+    public ResponseEntity<Review> toggleReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview, @RequestBody Optional<User> user) {
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (!movieOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -132,7 +132,10 @@ public class MovieController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         user = userRepository.findByMail(username);
         // Check if the user is already in the likedBy list
-        if (!review.getLikedBy().contains(user.orElse(null))) {
+        if (review.getLikedBy().contains(user.orElse(null))) {
+            // If yes, remove the user from the list
+            review.getLikedBy().remove(user.orElse(null));
+        } else {
             // If not, add the user to the list
             review.getLikedBy().add(user.orElse(null));
         }

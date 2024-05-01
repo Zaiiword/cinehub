@@ -1,6 +1,7 @@
 package fr.but3.cinehub.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -8,9 +9,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import fr.but3.cinehub.entity.Movie;
 import fr.but3.cinehub.entity.RegisterUserDto;
 import fr.but3.cinehub.entity.User;
 import fr.but3.cinehub.entity.UserSummary;
+import fr.but3.cinehub.repository.MovieRepository;
 import fr.but3.cinehub.repository.UserRepository;
 
 import java.util.Optional;
@@ -22,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private MovieRepository movieRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -60,6 +66,55 @@ public class UserController {
         return userRepository.findByMail(username);
     }
 
+    @PostMapping("/watchlist/{id}")
+    public ResponseEntity<?> addToWatchlist(@PathVariable Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        User currentUser = userRepository.findByMail(currentUserName).orElse(null);
+
+        if (currentUser == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+
+        Optional<Movie> optionalMovie = movieRepository.findById(id);
+        if (optionalMovie.isEmpty()) {
+            return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
+        }   
+
+        Movie movie = optionalMovie.get();
+
+        if (!currentUser.getWatchlist().contains(movie)) {
+            currentUser.getWatchlist().add(movie);
+        }
+        userRepository.save(currentUser);
+
+        return new ResponseEntity<>(currentUser, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/watchlist/{id}")
+    public ResponseEntity<?> removeFromWatchlist(@PathVariable Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        User currentUser = userRepository.findByMail(currentUserName).orElse(null);
+
+        if (currentUser == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+        
+        Optional<Movie> optionalMovie = movieRepository.findById(id);
+        if (optionalMovie.isEmpty()) {
+            return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
+        }   
+
+        Movie movie = optionalMovie.get();
+
+        if (currentUser.getWatchlist().contains(movie)) {
+            currentUser.getWatchlist().remove(movie);
+        }
+        userRepository.save(currentUser);
+
+        return new ResponseEntity<>(currentUser, HttpStatus.OK);
+    }
 
     @GetMapping("/isConnected")
     public boolean isConnected() {
