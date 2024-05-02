@@ -17,6 +17,7 @@ import fr.but3.cinehub.repository.MovieRepository;
 import fr.but3.cinehub.repository.UserRepository;
 
 import java.util.Optional;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -31,6 +32,42 @@ public class UserController {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+    // allow only admin 
+    @GetMapping("")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = (List<User>) userRepository.findAll();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    // allow only admin     
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        userRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+    
+    // allow only admin     
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        
+        Optional<User> userOptional = userRepository.findById(id);
+        if(!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User updatedUser = userOptional.get();
+
+        updatedUser.setName(user.getName());
+        updatedUser.setFirstName(user.getFirstName());
+        updatedUser.setMail(user.getMail());
+        updatedUser.setLanguage(user.getLanguage());
+        updatedUser.setPassword(user.getPassword());
+        updatedUser.setRole(user.getRole());
+        updatedUser.setLastConnection(user.getLastConnection());
+        updatedUser.setProfilePicture(user.getProfilePicture());
+        userRepository.save(updatedUser);
+        return ResponseEntity.ok(updatedUser);
+    }
 
     @GetMapping("/{id}")
     public Optional<User> getUser(@PathVariable Long id) {
@@ -126,23 +163,5 @@ public class UserController {
         return authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
     }
 
-    @PatchMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User userUpdates) {
-        return userRepository.findById(id)
-            .map(user -> {
-                user.setName(userUpdates.getName());
-                user.setFirstName(userUpdates.getFirstName());
-                user.setMail(userUpdates.getMail());
-                user.setLanguage(userUpdates.getLanguage());
-                user.setPassword(userUpdates.getPassword());
-                user.setRole(userUpdates.getRole());
-                user.setLastConnection(userUpdates.getLastConnection());
-                user.setProfilePicture(userUpdates.getProfilePicture());
-                return userRepository.save(user);
-            })
-            .orElseGet(() -> {
-                userUpdates.setId(id);
-                return userRepository.save(userUpdates);
-            });
-    }
+
 }

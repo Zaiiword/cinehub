@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +51,19 @@ public class MovieController {
     public ResponseEntity<List<Movie>> getAll(){
         List<Movie> CreneauDisponibles = (List<Movie>) movieRepository.findAll();
         return new ResponseEntity<>(CreneauDisponibles, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteMovie(@PathVariable("id") Long id) {
+        // allow only admin 
+        Optional<Movie> movieOptional = movieRepository.findById(id);
+        if (!movieOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Movie movie = movieOptional.get();
+        movieRepository.delete(movie);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/search")
@@ -121,12 +135,8 @@ public class MovieController {
     }
 
 
-    @PatchMapping("/{id}/review/{idReview}")
-    public ResponseEntity<Review> toggleReviewLike(@PathVariable("id") Long id, @PathVariable("idReview") Long idReview, @RequestBody Optional<User> user) {
-        Optional<Movie> movieOptional = movieRepository.findById(id);
-        if (!movieOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @PatchMapping("/review/{idReview}")
+    public ResponseEntity<Review> toggleReviewLike(@PathVariable("idReview") Long idReview) {
 
         Optional<Review> reviewOptional = reviewRepository.findById(idReview);
         if (!reviewOptional.isPresent()) {
@@ -135,13 +145,11 @@ public class MovieController {
 
         Review review = reviewOptional.get();
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        user = userRepository.findByMail(username);
-        // Check if the user is already in the likedBy list
+        Optional<User> user = userRepository.findByMail(username);
+
         if (review.getLikedBy().contains(user.orElse(null))) {
-            // If yes, remove the user from the list
             review.getLikedBy().remove(user.orElse(null));
         } else {
-            // If not, add the user to the list
             review.getLikedBy().add(user.orElse(null));
         }
 
@@ -149,41 +157,44 @@ public class MovieController {
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
+    // allow only admin 
+    @DeleteMapping("/review/{idReview}")
+    public ResponseEntity<?> deleteReview(@PathVariable Long idReview) {
+        reviewRepository.deleteById(idReview);
+        return ResponseEntity.ok().build();
+    }
 
+    
+    // allow only admin
     @PatchMapping("/{id}")
     public ResponseEntity<Movie> updateMovie(@PathVariable("id") Long id, @RequestBody Movie updatedMovie) {
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (!movieOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
-        Movie existingMovie = movieOptional.get();
-        if (updatedMovie.getName() != null) {
-            existingMovie.setName(updatedMovie.getName());
-        }
-        if (updatedMovie.getDuration() != null) {
-            existingMovie.setDuration(updatedMovie.getDuration());
-        }
-
-        movieRepository.save(existingMovie);
-        return new ResponseEntity<>(existingMovie, HttpStatus.OK);
+        
+        Movie movie = movieOptional.get();
+        movie.setName(updatedMovie.getName());
+        movie.setDuration(updatedMovie.getDuration());
+        movie.setRating(updatedMovie.getRating());
+        movie.setDirectors(updatedMovie.getDirectors());
+        movie.setActors(updatedMovie.getActors());
+        movie.setSynopsis(updatedMovie.getSynopsis());
+        movie.setTrailer(updatedMovie.getTrailer());
+        movie.setPoster(updatedMovie.getPoster());
+        movie.setGenres(updatedMovie.getGenres());
+        movie.setReleased(updatedMovie.getReleased());
+        movie.setProductionCountry(updatedMovie.getProductionCountry());
+        movie.setImdbId(updatedMovie.getImdbId());
+        movie.setReviews(updatedMovie.getReviews());
+        
+        movieRepository.save(movie);
+        return new ResponseEntity<>(movie, HttpStatus.OK);
     }
-
+    
     @GetMapping("/genres")
     public ResponseEntity<List<Genre>> getAllGenres() {
         List<Genre> genres = (List<Genre>) genreRepository.findAll();
         return new ResponseEntity<>(genres, HttpStatus.OK);
-    }
-
-    // not used to calculate in the client side
-    @GetMapping("/genre/{genreId}")
-    public ResponseEntity<List<Movie>> getMoviesByGenre(@PathVariable Long genreId) {
-        Optional<Genre> optionalGenre = genreRepository.findById(genreId);
-        if (optionalGenre == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        Genre genre = optionalGenre.get();
-        return new ResponseEntity<>(genre.getMovies(), HttpStatus.OK);
     }
 }
