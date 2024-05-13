@@ -55,7 +55,14 @@ public class MovieController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable("id") Long id) {
+
         // allow only admin 
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<User> userPatch = userRepository.findByMail(username);
+         if( ! userPatch.get().getRole().equals("admin")){
+          return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+         }
+          
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (!movieOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -157,17 +164,30 @@ public class MovieController {
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
-    // allow only admin 
+    
     @DeleteMapping("/review/{idReview}")
     public ResponseEntity<?> deleteReview(@PathVariable Long idReview) {
+         // allow only admin 
+         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+         Optional<User> userPatch = userRepository.findByMail(username);
+          if( ! userPatch.get().getRole().equals("admin")){
+           return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+          }
+
         reviewRepository.deleteById(idReview);
         return ResponseEntity.ok().build();
     }
 
     
-    // allow only admin
     @PatchMapping("/{id}")
     public ResponseEntity<Movie> updateMovie(@PathVariable("id") Long id, @RequestBody Movie updatedMovie) {
+         // allow only admin 
+         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+         Optional<User> userPatch = userRepository.findByMail(username);
+          if( ! userPatch.get().getRole().equals("admin")){
+           return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+          }
+
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (!movieOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

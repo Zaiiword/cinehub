@@ -33,25 +33,36 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     
-    // allow only admin 
     @GetMapping("")
     public ResponseEntity<List<User>> getAllUsers() {
+         // allow only admin 
+         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+         Optional<User> userPatch = userRepository.findByMail(username);
+         System.out.println( userPatch.get().getRole());
+          if( ! userPatch.get().getRole().equals("admin")){
+           return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+          }
         List<User> users = (List<User>) userRepository.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    // allow only admin     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+         // allow only admin 
+         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+         Optional<User> userPatch = userRepository.findByMail(username);
+          if( ! userPatch.get().getRole().equals("admin")){
+           return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+          }
         userRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
     
-    // allow only admin     
     @PatchMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        
-        Optional<User> userOptional = userRepository.findById(id);
+
+       String username = SecurityContextHolder.getContext().getAuthentication().getName();
+       Optional<User> userOptional = userRepository.findByMail(username);
         if(!userOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -90,7 +101,7 @@ public class UserController {
         user.setMail(registerUserDto.getMail());
         user.setLanguage(registerUserDto.getLanguage());
         user.setPassword(bCryptPasswordEncoder.encode(registerUserDto.getPassword()));
-        user.setRole("admin");
+        user.setRole("user");
 
         User savedUser = userRepository.save(user);
         System.out.println(savedUser);
