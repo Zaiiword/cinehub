@@ -111,7 +111,7 @@ WHERE EXISTS (
     WHERE r.movie_id = m.id
 );
 
-INSERT INTO genre (name) VALUES ('Science Fiction'), ('Drame'), ('Thriller'), ('Action'), ('Crime'), ('Aventure'), ('Animation');
+INSERT INTO genre (name) VALUES ('Science Fiction'), ('Drama'), ('Thriller'), ('Action'), ('Crime'), ('Adventure'), ('Animation'), ('Fantasy');
 
 -- Insérer des genres pour chaque film
 INSERT INTO movie_genre (movie_id, genre_id)
@@ -124,11 +124,11 @@ VALUES
   (6, 1), (6, 2), (6, 4), -- Interstellar : Science Fiction, Drame, Action
   (7, 2), -- The Shawshank Redemption : Drame
   (8, 2), (8, 5), -- The Godfather : Drame, Crime
-  (9, 5), (9, 2), -- The Lord of the Rings: The Return of the King : Aventure, Drame
+  (9, 6), (9, 2), (9, 8), -- The Lord of the Rings: The Return of the King : Aventure, Drame, Fantasy
   (10, 2), (10, 5), -- The Dark Knight : Drame, Crime
   (11, 1), (11, 2), -- Inception : Science Fiction, Drame
   (12, 1), (12, 2), (12, 4), -- The Matrix : Science Fiction, Drame, Action
   (13, 1), (13, 2), (13, 4), -- Blade Runner 2049 : Science Fiction, Drame, Action
   (14, 2), (14, 4), (14, 5), -- Pulp Fiction : Drame, Action
-  (15, 2), (15, 4), -- Fight Club : Drame, Action
-  (16, 1), (16, 2), (16, 6); -- Spirited Away : Science Fiction, Drame, Animation 
+  (15, 2), (15, 4), (15, 3), -- Fight Club : Drame, Action, Thriller
+  (16, 6), (16, 7), (16, 8); -- Spirited Away : Aventure, Animation, Fantasy 
