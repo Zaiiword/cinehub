@@ -1,16 +1,16 @@
 INSERT INTO app_user (name, first_name, mail, language, password, role, accout_created, last_connection, profile_picture)
 VALUES 
-('Doe', 'John', 'john.doe@example.com', 'English', 'password123', 'admin', '2022-01-01', '2022-01-02', 'profile_picture_url1'),
-('Smith', 'Jane', 'jane.smith@example.com', 'French', 'password456', 'user', '2022-01-03', '2022-01-04', 'profile_picture_url2'),
-('Johnson', 'Robert', 'robert.johnson@example.com', 'Spanish', 'password789', 'admin', '2022-01-05', '2022-01-06', 'profile_picture_url3'),
-('Williams', 'Michael', 'michael.williams@example.com', 'German', 'password1011', 'user', '2022-01-07', '2022-01-08', 'profile_picture_url4'),
-('Brown', 'Sarah', 'sarah.brown@example.com', 'Italian', 'password1213', 'admin', '2022-01-09', '2022-01-10', 'profile_picture_url5'),
-('Jones', 'Jessica', 'jessica.jones@example.com', 'English', 'password1415', 'user', '2022-01-11', '2022-01-12', 'profile_picture_url6'),
-('Miller', 'Christopher', 'christopher.miller@example.com', 'French', 'password1617', 'admin', '2022-01-13', '2022-01-14', 'profile_picture_url7'),
-('Davis', 'Jennifer', 'jennifer.davis@example.com', 'Spanish', 'password1819', 'user', '2022-01-15', '2022-01-16', 'profile_picture_url8'),
-('Wilson', 'Brian', 'brian.wilson@example.com', 'German', 'password2021', 'admin', '2022-01-17', '2022-01-18', 'profile_picture_url9'),
-('Anderson', 'Emily', 'emily.anderson@example.com', 'Italian', 'password2223', 'user', '2022-01-19', '2022-01-20', 'profile_picture_url10'),
-('Dekeister', 'clément', 'admin', 'German', '$2a$12$uM09p9hjtvjQqZf14klQ9.JfGt2GPO5iX3F9vXFRX43npwuX3F/D.', 'admin', '2022-01-17', '2022-01-18', 'profile_picture_url9');
+('Doe', 'John', 'john.doe@example.com', 'English', 'password123', 'admin', '2022-01-01', '2022-01-02', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Smith', 'Jane', 'jane.smith@example.com', 'French', 'password456', 'user', '2022-01-03', '2022-01-04', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Johnson', 'Robert', 'robert.johnson@example.com', 'Spanish', 'password789', 'admin', '2022-01-05', '2022-01-06', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Williams', 'Michael', 'michael.williams@example.com', 'German', 'password1011', 'user', '2022-01-07', '2022-01-08', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Brown', 'Sarah', 'sarah.brown@example.com', 'Italian', 'password1213', 'admin', '2022-01-09', '2022-01-10', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Jones', 'Jessica', 'jessica.jones@example.com', 'English', 'password1415', 'user', '2022-01-11', '2022-01-12', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Miller', 'Christopher', 'christopher.miller@example.com', 'French', 'password1617', 'admin', '2022-01-13', '2022-01-14', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Davis', 'Jennifer', 'jennifer.davis@example.com', 'Spanish', 'password1819', 'user', '2022-01-15', '2022-01-16', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Wilson', 'Brian', 'brian.wilson@example.com', 'German', 'password2021', 'admin', '2022-01-17', '2022-01-18', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Anderson', 'Emily', 'emily.anderson@example.com', 'Italian', 'password2223', 'user', '2022-01-19', '2022-01-20', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png'),
+('Dekeister', 'clément', 'admin', 'German', '$2a$12$uM09p9hjtvjQqZf14klQ9.JfGt2GPO5iX3F9vXFRX43npwuX3F/D.', 'admin', '2022-01-17', '2022-01-18', 'https://fr.web.img6.acsta.net/c_80_80/commons/v9/common/empty/empty_avatar.png');
 
 
 INSERT INTO movie (name, duration, rating, directors, actors, synopsis, trailer, poster, released, production_country, imdb_id)
