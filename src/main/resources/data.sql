@@ -40,7 +40,7 @@ VALUES
    'A computer hacker learns that the world he lives in is actually a computer simulation and fights to escape it.',
    'https://www.youtube.com/embed/vKQi3bBA1y8', 'https://fr.web.img4.acsta.net/c_310_420/medias/04/34/49/043449_af.jpg', '1999-03-31', 'USA', 'tt0133693'),
 
-  ('Blade Runner 2049', 164, 4.8, 'Denis Villeneuve', 'Ryan Gosling, Harrison Ford, Ana de Armas',
+  ('Blade Runner 2049', 164, 4.5, 'Denis Villeneuve', 'Ryan Gosling, Harrison Ford, Ana de Armas',
    'A young blade runner discovers a secret that could throw humanity into chaos.',
    'https://www.youtube.com/embed/gCcx85zbxz4', 'https://fr.web.img6.acsta.net/r_1920_1080/pictures/17/08/25/11/58/463146.jpg', '2017-10-06', 'USA', 'tt1856101'),
 
@@ -54,7 +54,29 @@ VALUES
 
   ('Spirited Away', 125, 4.9, 'Hayao Miyazaki', 'Rumi Hiiragi, Mari Nakatsu, Yasuko Sawada',
    'A young girl wanders into the spirit world and must find a way to free herself and her parents.',
-   'https://www.youtube.com/embed/ByXuk9QqQkk','https://fr.web.img4.acsta.net/r_1920_1080/img/73/46/7346b5efd3b418856fd519ddd738a0a7.jpg', '2001-07-20', 'Japan', 'tt0245729');
+   'https://www.youtube.com/embed/ByXuk9QqQkk','https://fr.web.img4.acsta.net/r_1920_1080/img/73/46/7346b5efd3b418856fd519ddd738a0a7.jpg', '2001-07-20', 'Japan', 'tt0245729'),
+
+  ('The Social Network', 120, 5, 'David Fincher', 'Jesse Eisenberg, Andrew Garfield, Justin Timberlake', 'The story of the founding of Facebook and the legal battles that followed.', 'https://www.youtube.com/embed/lB95KLmpLR4', 'https://fr.web.img3.acsta.net/r_1920_1080/medias/nmedia/18/78/52/54/19465989.jpg', '2010-10-01', 'USA', 'tt1285016'),
+  ('Forrest Gump', 142, 5, 'Robert Zemeckis', 'Tom Hanks, Robin Wright, Gary Sinise', 'The life of Forrest Gump, a simple man who finds himself in extraordinary situations throughout the latter half of the 20th century.', 'https://www.youtube.com/embed/bLvqoHBptjg', 'https://fr.web.img2.acsta.net/r_1920_1080/img/1f/67/1f677a264b39daec1e5d4dc2214190b3.jpg', '1994-07-06', 'USA', 'tt0109830'),
+  ('The Green Mile', 189, 5, 'Frank Darabont', 'Tom Hanks, Michael Clarke Duncan, David Morse', 'The story of a man with supernatural healing powers on death row.', 'https://www.youtube.com/embed/Ki4haFrqSrw', 'https://fr.web.img4.acsta.net/r_1920_1080/medias/nmedia/18/66/15/78/19254683.jpg', '1999-12-10', 'USA', 'tt0120689'),
+  ('The Silence of the Lambs', 118, 5, 'Jonathan Demme', 'Jodie Foster, Anthony Hopkins, Scott Glenn', 'A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.', 'https://www.youtube.com/embed/W6Mm8Sbe__o', 'https://fr.web.img6.acsta.net/r_1920_1080/img/5e/92/5e9243ee9515d125986262871dc0aa4f.jpg', '1991-02-14', 'USA', 'tt0102926'),
+  ('Goodfellas', 146, 5, 'Martin Scorsese', 'Robert De Niro, Ray Liotta, Joe Pesci', 'The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.', 'https://www.youtube.com/embed/2ilzidi_J8Q', 'https://fr.web.img6.acsta.net/r_1920_1080/img/7e/0a/7e0ac404e7d93034be875d336ccbfd12.jpg', '1990-09-19', 'USA', 'tt0099685'),
+  ('Schindler s List', 195, 5, 'Steven Spielberg', 'Liam Neeson, Ben Kingsley, Ralph Fiennes', 'In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.', 'https://www.youtube.com/embed/JdRGC-w9syA', 'https://fr.web.img5.acsta.net/r_1920_1080/img/fd/dc/fddc74e3d3009b20d58b5800448d61b6.jpg', '1994-12-15', 'USA', 'tt0108052'),
+  ('Se7en', 127, 5, 'David Fincher', 'Morgan Freeman, Brad Pitt, Kevin Spacey', 'Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.', 'https://www.youtube.com/embed/znmZoVkCjpI', 'https://fr.web.img6.acsta.net/r_1920_1080/img/0f/f8/0ff84ea3639ab128d9060621e04e9336.jpg', '1995-02-08', 'USA', 'tt0114369'),
+  ('The Departed', 151, 5, 'Martin Scorsese', 'Leonardo DiCaprio, Matt Damon, Jack Nicholson', 'An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.', 'https://www.youtube.com/embed/auYbpnEwBBg', 'https://fr.web.img6.acsta.net/r_1920_1080/medias/nmedia/18/36/21/63/18663442.jpg', '2006-10-06', 'USA', 'tt0407887'),
+  ('The Pianist', 150, 5, 'Roman Polanski', 'Adrien Brody, Thomas Kretschmann, Frank Finlay', 'A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.', 'https://www.youtube.com/embed/BFwGqLa_oAo', 'https://fr.web.img3.acsta.net/r_1920_1080/medias/nmedia/00/02/46/23/affiche.jpg', '2002-09-25', 'France, Poland, Germany, UK', 'tt0253474'),
+  ('Saving Private Ryan', 169, 5, 'Steven Spielberg', 'Tom Hanks, Matt Damon, Tom Sizemore', 'Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.', 'https://www.youtube.com/embed/zwhP5b4tD6g', 'https://fr.web.img2.acsta.net/r_1920_1080/img/35/9c/359c830da91d28fc90050d4f72938669.jpg', '1998-07-24', 'USA', 'tt0120815'),
+  ('The Grand Budapest Hotel', 99, 5, 'Wes Anderson', 'Ralph Fiennes, F. Murray Abraham, Mathieu Amalric', 'The adventures of Gustave H, a legendary concierge at a famous European hotel between the wars, and Zero Moustafa, the lobby boy who becomes his most trusted friend.', 'https://www.youtube.com/embed/1Fg5iWmQjwk', 'https://fr.web.img6.acsta.net/r_1920_1080/img/3b/f5/3bf5ede1c6d3f3bcb8e6341a31f32d2b.jpg', '2014-03-26', 'Germany, USA', 'tt2278388'),
+
+('La La Land', 128, 5, 'Damien Chazelle', 'Ryan Gosling, Emma Stone, Rosemarie DeWitt', 'While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.', 'https://www.youtube.com/embed/0pdqf4P9MB8', 'https://fr.web.img6.acsta.net/r_1920_1080/img/bd/74/bd749e995bec15ccab2ce53461f5a16d.jpg', '2017-01-25', 'USA, Hong Kong', 'tt3783958'),
+
+('Eternal Sunshine of the Spotless Mind', 108, 5, 'Michel Gondry', 'Jim Carrey, Kate Winslet, Tom Wilkinson', 'When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.', 'https://www.youtube.com/embed/c2e-bj6qy8Y', 'https://fr.web.img6.acsta.net/r_1920_1080/img/45/9d/459d43f477d3e857d4c054b569da0b97.jpg', '2004-03-17', 'USA', 'tt0338013'),
+
+('The Truman Show', 103, 5, 'Peter Weir', 'Jim Carrey, Ed Harris, Laura Linney', 'An insurance salesman discovers his whole life is actually a reality TV show.', 'https://www.youtube.com/embed/loTIzXAS7v4', 'https://fr.web.img2.acsta.net/r_1920_1080/pictures/16/06/14/12/15/330151.jpg', '1998-06-03', 'USA', 'tt0120382'),
+
+('Spider-Man', 121, 5, 'Sam Raimi', 'Tobey Maguire, Kirsten Dunst, Willem Dafoe', 'When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.', 'https://www.youtube.com/embed/O7zvehDxttM', 'https://fr.web.img5.acsta.net/r_1920_1080/medias/nmedia/00/00/00/33/spiderman.jpg', '2002-05-01', 'USA', 'tt0145487');
+
+
 INSERT INTO review (user_id, movie_id, content, rating) 
 VALUES 
 (1, 1, 'Great movie', 5),
@@ -92,11 +114,60 @@ VALUES
 (2, 13, 'A visually stunning sequel that expands on the original film s universe.', 5),
 (5, 13, 'A worthy follow-up that lives up to the hype.', 4.5),
 (8, 14, 'A cult classic with unforgettable characters and quotable dialogue.', 5),
-(3, 14, 'Tarantino s unique style is on full display in this genre-bending masterpiece.', 4.8),
+(3, 14, 'Tarantino s unique style is on full display in this genre-bending masterpiece.', 4.5),
 (6, 15, 'A dark and disturbing film that will stay with you long after the credits roll.', 5),
 (9, 15, 'A powerful exploration of masculinity and societal norms.', 4),
 (4, 16, 'A beautiful and imaginative animated film that is perfect for all ages.', 5),
-(7, 16, 'A heartwarming story about a young girl s journey through the spirit world.', 5);
+(7, 16, 'A heartwarming story about a young girl s journey through the spirit world.', 5),
+(1, 17, 'A gripping and visually stunning film with a thought-provoking storyline.', 4.5),
+(2, 17, 'Denis Villeneuve delivers another masterpiece with Blade Runner 2049. The cinematography is breathtaking.', 5),
+(3, 17, 'A worthy successor to the original Blade Runner. Ryan Gosling delivers a standout performance.', 4.5),
+(4, 18, 'Forrest Gump is a timeless classic that never fails to tug at the heartstrings. Tom Hanks is exceptional in the lead role.', 5),
+(5, 18, 'An emotional rollercoaster from start to finish. Forrest Gump is a must-watch for any movie lover.', 4.5),
+(6, 18, 'A heartwarming and inspirational journey through American history. Tom Hanks is brilliant as always.', 5),
+(7, 18, 'Forrest Gump is a cinematic gem that touches the soul. A must-watch for any movie lover.', 5),
+(8, 19, 'An emotionally powerful film with stellar performances. Michael Clarke Duncan is unforgettable in his role.', 4.5),
+(9, 19, 'The Green Mile is a moving story that stays with you long after the credits roll. A true cinematic masterpiece.', 5),
+(10, 19, 'A gripping and emotionally charged film that explores themes of redemption and humanity.', 4.5),
+(11, 19, 'The Green Mile is a touching and thought-provoking film that leaves a lasting impression.', 4.5),
+(1, 20, 'A suspenseful and chilling thriller with outstanding performances from Jodie Foster and Anthony Hopkins.', 5),
+(2, 20, 'The Silence of the Lambs is a masterpiece of psychological horror. Anthony Hopkins iconic portrayal of Hannibal Lecter is unforgettable.', 5),
+(3, 20, 'A tense and atmospheric film that keeps you on the edge of your seat until the very end.', 4.5),
+(4, 20, 'The Silence of the Lambs is a gripping psychological thriller that will leave you breathless.', 4.5),
+(5, 21, 'Goodfellas is a gritty and intense portrayal of the mafia lifestyle. Robert De Niro and Joe Pesci deliver standout performances.', 5),
+(6, 21, 'A riveting crime drama with powerhouse performances and Martin Scorsese s masterful direction.', 4.5),
+(7, 21, 'Goodfellas is a modern classic that expertly blends drama, violence, and dark humor.', 5),
+(8, 21, 'A gripping and stylish film that immerses you in the world of organized crime.', 4.5),
+(9, 22, 'Schindler s List is a harrowing and powerful film that showcases the resilience of the human spirit.', 5),
+(10, 22, 'Steven Spielberg delivers a haunting and poignant portrayal of one man s quest to save lives during one of humanity s darkest periods.', 5),
+(11, 22, 'A heartbreaking and unforgettable film that serves as a reminder of the atrocities of the Holocaust.', 4.5),
+(5, 22, 'Schindler s List is a cinematic masterpiece that will leave a lasting impact on audiences worldwide.', 5),
+(1, 23, 'Se7en is a chilling and atmospheric thriller with a shocking twist ending. Brad Pitt and Morgan Freeman deliver standout performances.', 5),
+(2, 23, 'David Fincher crafts a dark and suspenseful film that keeps you guessing until the very end.', 4.5),
+(3, 23, 'Se7en is a gripping and intense thriller that explores the darkest depths of the human psyche.', 5),
+(4, 23, 'A disturbing and thought-provoking film that lingers in your mind long after it s over.', 4.5),
+(5, 24, 'The Departed is a tense and gripping crime thriller with an all-star cast. Leonardo DiCaprio and Matt Damon deliver standout performances.', 5),
+(6, 24, 'Martin Scorsese delivers another masterpiece with The Departed. The tension is palpable, and the twists keep you guessing until the very end.', 4.5),
+(7, 24, 'The Departed is a riveting and suspenseful film that will keep you on the edge of your seat from start to finish.', 5),
+(8, 24, 'A thrilling and unpredictable ride that showcases Martin Scorsese s mastery of the crime genre.', 4.5),
+(9, 25, 'The Pianist is a haunting and emotional film that captures the horrors of the Holocaust with heartbreaking authenticity.', 5),
+(10, 25, 'Adrien Brody delivers a powerhouse performance in Roman Polanski s gripping and unforgettable film.', 5),
+(11, 25, 'A moving and poignant portrayal of survival and hope in the face of unimaginable adversity.', 4.5),
+(6, 25, 'The Pianist is a cinematic triumph that leaves a profound impact on audiences long after the credits roll.', 5),
+(1, 26, 'Saving Private Ryan is a visceral and emotionally powerful film that captures the brutality of war with stunning realism.', 5),
+(2, 26, 'Steven Spielberg delivers an unforgettable cinematic experience with Saving Private Ryan. Tom Hanks delivers a career-defining performance.', 4.5),
+(3, 26, 'A gripping and emotionally resonant film that pays tribute to the sacrifices of those who served in World War II.', 5),
+(4, 26, 'Saving Private Ryan is a timeless classic that showcases the heroism and humanity of the Greatest Generation.', 4.5),
+(5, 27, 'An absolute delight from start to finish. The quirky characters and whimsical storytelling make this film a joy to watch.', 5),
+(6, 27, 'Wes Anderson s unique visual style and attention to detail shine in The Grand Budapest Hotel. A must-see for fans of offbeat cinema.', 4.5),
+(7, 28, 'La La Land is a modern classic that reinvigorates the musical genre. Emma Stone and Ryan Gosling have incredible chemistry on screen.', 5),
+(8, 28, 'A beautiful love letter to Los Angeles and the magic of Hollywood. The music and dance sequences are simply mesmerizing.', 5),
+(9, 29, 'Eternal Sunshine of the Spotless Mind is a thought-provoking exploration of love, memory, and human connection. A true masterpiece.', 4),
+(10, 29, 'Jim Carrey delivers a career-best performance in this mind-bending and emotionally resonant film. Michel Gondry s direction is exceptional.', 4.5),
+(11, 30, 'The Truman Show is a thought-provoking satire that raises questions about reality, freedom, and the nature of entertainment. Jim Carrey is outstanding in the lead role.', 5),
+(1, 30, 'Peter Weir s direction and Jim Carrey s performance make The Truman Show a captivating and unforgettable cinematic experience.', 4.5),
+(2, 31, 'Spider-Man is a thrilling and action-packed superhero film that perfectly captures the spirit of the character. Tobey Maguire shines in the lead role.', 5),
+(3, 31, 'Sam Raimi s Spider-Man is a nostalgic favorite for many, with its iconic scenes and memorable moments. A must-watch for comic book fans.', 4.5);
 
 
 UPDATE movie m
@@ -111,16 +182,19 @@ WHERE EXISTS (
     WHERE r.movie_id = m.id
 );
 
-INSERT INTO genre (name) VALUES ('Science Fiction'), ('Drama'), ('Thriller'), ('Action'), ('Crime'), ('Adventure'), ('Animation'), ('Fantasy');
+-- Insérer des genres
+INSERT INTO genre (name) VALUES 
+('Science Fiction'), ('Drama'), ('Thriller'), ('Action'), ('Crime'), ('Adventure'), ('Animation'), 
+('Fantasy'), ('War'), ('Biography'), ('Comedy'), ('Romance');
 
 -- Insérer des genres pour chaque film
 INSERT INTO movie_genre (movie_id, genre_id)
 VALUES
-  (1, 1), (1, 2), (1, 4), -- Dune : Science Fiction, Drame, Action
-  (2, 1), (2, 2), (2, 4), -- Dune: Part Two : Science Fiction, Drame, Action
-  (3, 2), (3, 5), -- Oppenheimer : Drame, Action, Crime
+  (1, 1), (1, 2), (1, 6), -- Dune : Science Fiction, Drame, Aventure
+  (2, 1), (2, 2), (2, 6), -- Dune: Part Two : Science Fiction, Drame, Aventure
+  (3, 2), (3, 5), (3, 6), -- Oppenheimer : Drame, Crime, Aventure
   (4, 3), (4, 5), (4, 4), -- The Batman : Thriller, Crime, Action
-  (5, 3), (5, 4), -- Joker : Thriller, Horreur
+  (5, 3), (5, 5), -- Joker : Thriller, Crime
   (6, 1), (6, 2), (6, 4), -- Interstellar : Science Fiction, Drame, Action
   (7, 2), -- The Shawshank Redemption : Drame
   (8, 2), (8, 5), -- The Godfather : Drame, Crime
@@ -129,6 +203,25 @@ VALUES
   (11, 1), (11, 2), -- Inception : Science Fiction, Drame
   (12, 1), (12, 2), (12, 4), -- The Matrix : Science Fiction, Drame, Action
   (13, 1), (13, 2), (13, 4), -- Blade Runner 2049 : Science Fiction, Drame, Action
-  (14, 2), (14, 4), (14, 5), -- Pulp Fiction : Drame, Action
+  (14, 2), (14, 5), (14, 1), -- Pulp Fiction : Drame, Crime, Science Fiction
   (15, 2), (15, 4), (15, 3), -- Fight Club : Drame, Action, Thriller
-  (16, 6), (16, 7), (16, 8); -- Spirited Away : Aventure, Animation, Fantasy 
+  (16, 6), (16, 7), (16, 8), -- Spirited Away : Aventure, Animation, Fantasy 
+  (17, 2),  -- The Social Network : Drame
+  (18, 2), (18, 6), -- Forrest Gump : Drame, Adventure
+  (19, 2), (19, 8), -- The Green Mile : Drame, Fantasy
+  (20, 3), (20, 5),  -- The Silence of the Lambs : Thriller, Crime
+  (21, 5), (21, 3), -- Goodfellas : Crime, Thriller
+  (22, 5), (22, 10), -- Schindler's List : Crime, Biography
+  (23, 3), (23, 5), -- Se7en : Thriller, Crime
+  (24, 5), (24, 10), -- The Departed : Crime, Biography
+  (25, 2), (25, 10), (25, 9), -- The Pianist : Drame, Biography, War
+  (26, 9),  -- Saving Private Ryan : War
+  (27, 11), (27, 6), -- The Grand Budapest Hotel : Comedy, Aventure
+  (28, 12), -- La La Land : Romance
+  (29, 2), (29, 12), -- Eternal Sunshine of the Spotless Mind : Drame, Romance
+  (30, 11), (30, 6), -- The Truman Show : Comédie, Aventure
+  (31, 4), (31, 6), (31, 1); -- Spider-Man (2002) : Action, Aventure, Fantastique
+
+
+
+
