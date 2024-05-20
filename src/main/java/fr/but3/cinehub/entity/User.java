@@ -62,7 +62,6 @@ public class User {
     @ManyToMany
     private List<Movie> watchlist;
     
-    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
 

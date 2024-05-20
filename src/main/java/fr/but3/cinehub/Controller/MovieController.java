@@ -29,6 +29,7 @@ import fr.but3.cinehub.repository.GenreRepository;
 import fr.but3.cinehub.repository.MovieRepository;
 import fr.but3.cinehub.repository.ReviewRepository;
 import fr.but3.cinehub.repository.UserRepository;
+import fr.but3.cinehub.service.MovieRecommendationService;
 
 @CrossOrigin
 @RestController
@@ -46,6 +47,9 @@ public class MovieController {
 
     @Autowired
     GenreRepository genreRepository;
+
+    @Autowired
+    MovieRecommendationService movieRecommendationService;
 
     @GetMapping("")
     public ResponseEntity<List<Movie>> getAll(){
@@ -216,5 +220,13 @@ public class MovieController {
     public ResponseEntity<List<Genre>> getAllGenres() {
         List<Genre> genres = (List<Genre>) genreRepository.findAll();
         return new ResponseEntity<>(genres, HttpStatus.OK);
+    }
+
+   
+
+    @GetMapping("/recommendations/{userId}")
+    public ResponseEntity<List<Movie>> getRecommendations(@PathVariable("userId") Long userId) {
+        List<Movie> recommendedMovies = movieRecommendationService.recommendMovies(userId);
+        return new ResponseEntity<>(recommendedMovies, HttpStatus.OK);
     }
 }
