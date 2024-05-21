@@ -226,7 +226,7 @@ public class MovieController {
 
     @GetMapping("/recommendations/{userId}")
     public ResponseEntity<List<Movie>> getRecommendations(@PathVariable("userId") Long userId) {
-        List<Movie> recommendedMovies = movieRecommendationService.recommendMovies(userId);
+        List<Movie> recommendedMovies = movieRecommendationService.recommendMovies(userId, 3);
         return new ResponseEntity<>(recommendedMovies, HttpStatus.OK);
     }
 }

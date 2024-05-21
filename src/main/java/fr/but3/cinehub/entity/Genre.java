@@ -26,4 +26,13 @@ public class Genre {
     @JsonIgnore
     @ManyToMany(mappedBy = "genres")
     private List<Movie> movies;
+
+    @Override 
+    public String toString() { 
+        return "Genre{" + "id=" + id + ", name='" + name + '}'; 
+    }
+
+
+
+
 }

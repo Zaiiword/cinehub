@@ -45,4 +45,10 @@ public class Movie {
     @OneToMany(mappedBy = "movie")
     private List<Review> reviews;
 
+    @Override
+    public String toString() {
+        return "Movie [id=" + id + ", name=" + name + "]";
+    }
+
+    
 }

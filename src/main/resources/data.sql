@@ -79,10 +79,12 @@ VALUES
 
 INSERT INTO review (user_id, movie_id, content, rating) 
 VALUES 
+-- REVIEWS TEST FOR KNN ALGORITHM
+(11, 28, 'my favorite movie', 5),
+(11, 21, 'coooool', 2),
+
 (1, 1, 'Great movie', 5),
 (2, 1, 'Awesome movie', 4.5),
-(1, 1, 'Great movie', 5),
-(2, 1, 'Awesome movie', 4),
 (3, 1, 'Epic storytelling', 5), 
 (4, 2, 'Mind-blowing sequel', 5),
 (5, 2, 'A worthy continuation', 4),
@@ -109,7 +111,7 @@ VALUES
 (8, 10, 'Heath Ledger s performance as the Joker is one of the most iconic in cinema history.', 4.5),
 (9, 11, 'A mind-bending sci-fi movie that will challenge your perception of reality.', 5),
 (10, 11, 'Christopher Nolan is a genius. This movie is a must-see for any fan of his work.', 4.5),
-(11, 12, 'A ground-breaking sci-fi film that explores complex philosophical themes.', 5),
+(1, 12, 'A ground-breaking sci-fi film that explores complex philosophical themes.', 5),
 (1, 12, 'Mind-blowing action sequences and a thought-provoking story.', 4.5),
 (2, 13, 'A visually stunning sequel that expands on the original film s universe.', 5),
 (5, 13, 'A worthy follow-up that lives up to the hype.', 4.5),
@@ -129,7 +131,7 @@ VALUES
 (8, 19, 'An emotionally powerful film with stellar performances. Michael Clarke Duncan is unforgettable in his role.', 4.5),
 (9, 19, 'The Green Mile is a moving story that stays with you long after the credits roll. A true cinematic masterpiece.', 5),
 (10, 19, 'A gripping and emotionally charged film that explores themes of redemption and humanity.', 4.5),
-(11, 19, 'The Green Mile is a touching and thought-provoking film that leaves a lasting impression.', 4.5),
+(1, 19, 'The Green Mile is a touching and thought-provoking film that leaves a lasting impression.', 4.5),
 (1, 20, 'A suspenseful and chilling thriller with outstanding performances from Jodie Foster and Anthony Hopkins.', 5),
 (2, 20, 'The Silence of the Lambs is a masterpiece of psychological horror. Anthony Hopkins iconic portrayal of Hannibal Lecter is unforgettable.', 5),
 (3, 20, 'A tense and atmospheric film that keeps you on the edge of your seat until the very end.', 4.5),
@@ -140,7 +142,7 @@ VALUES
 (8, 21, 'A gripping and stylish film that immerses you in the world of organized crime.', 4.5),
 (9, 22, 'Schindler s List is a harrowing and powerful film that showcases the resilience of the human spirit.', 5),
 (10, 22, 'Steven Spielberg delivers a haunting and poignant portrayal of one man s quest to save lives during one of humanity s darkest periods.', 5),
-(11, 22, 'A heartbreaking and unforgettable film that serves as a reminder of the atrocities of the Holocaust.', 4.5),
+(1, 22, 'A heartbreaking and unforgettable film that serves as a reminder of the atrocities of the Holocaust.', 4.5),
 (5, 22, 'Schindler s List is a cinematic masterpiece that will leave a lasting impact on audiences worldwide.', 5),
 (1, 23, 'Se7en is a chilling and atmospheric thriller with a shocking twist ending. Brad Pitt and Morgan Freeman deliver standout performances.', 5),
 (2, 23, 'David Fincher crafts a dark and suspenseful film that keeps you guessing until the very end.', 4.5),
@@ -152,7 +154,7 @@ VALUES
 (8, 24, 'A thrilling and unpredictable ride that showcases Martin Scorsese s mastery of the crime genre.', 4.5),
 (9, 25, 'The Pianist is a haunting and emotional film that captures the horrors of the Holocaust with heartbreaking authenticity.', 5),
 (10, 25, 'Adrien Brody delivers a powerhouse performance in Roman Polanski s gripping and unforgettable film.', 5),
-(11, 25, 'A moving and poignant portrayal of survival and hope in the face of unimaginable adversity.', 4.5),
+(1, 25, 'A moving and poignant portrayal of survival and hope in the face of unimaginable adversity.', 4.5),
 (6, 25, 'The Pianist is a cinematic triumph that leaves a profound impact on audiences long after the credits roll.', 5),
 (1, 26, 'Saving Private Ryan is a visceral and emotionally powerful film that captures the brutality of war with stunning realism.', 5),
 (2, 26, 'Steven Spielberg delivers an unforgettable cinematic experience with Saving Private Ryan. Tom Hanks delivers a career-defining performance.', 4.5),
@@ -164,7 +166,7 @@ VALUES
 (8, 28, 'A beautiful love letter to Los Angeles and the magic of Hollywood. The music and dance sequences are simply mesmerizing.', 5),
 (9, 29, 'Eternal Sunshine of the Spotless Mind is a thought-provoking exploration of love, memory, and human connection. A true masterpiece.', 4),
 (10, 29, 'Jim Carrey delivers a career-best performance in this mind-bending and emotionally resonant film. Michel Gondry s direction is exceptional.', 4.5),
-(11, 30, 'The Truman Show is a thought-provoking satire that raises questions about reality, freedom, and the nature of entertainment. Jim Carrey is outstanding in the lead role.', 5),
+(1, 30, 'The Truman Show is a thought-provoking satire that raises questions about reality, freedom, and the nature of entertainment. Jim Carrey is outstanding in the lead role.', 5),
 (1, 30, 'Peter Weir s direction and Jim Carrey s performance make The Truman Show a captivating and unforgettable cinematic experience.', 4.5),
 (2, 31, 'Spider-Man is a thrilling and action-packed superhero film that perfectly captures the spirit of the character. Tobey Maguire shines in the lead role.', 5),
 (3, 31, 'Sam Raimi s Spider-Man is a nostalgic favorite for many, with its iconic scenes and memorable moments. A must-watch for comic book fans.', 4.5);
@@ -203,7 +205,7 @@ VALUES
   (11, 1), (11, 2), -- Inception : Science Fiction, Drame
   (12, 1), (12, 2), (12, 4), -- The Matrix : Science Fiction, Drame, Action
   (13, 1), (13, 2), (13, 4), -- Blade Runner 2049 : Science Fiction, Drame, Action
-  (14, 2), (14, 5), (14, 1), -- Pulp Fiction : Drame, Crime, Science Fiction
+  (14, 2), (14, 5), -- Pulp Fiction : Drame, Crime
   (15, 2), (15, 4), (15, 3), -- Fight Club : Drame, Action, Thriller
   (16, 6), (16, 7), (16, 8), -- Spirited Away : Aventure, Animation, Fantasy 
   (17, 2),  -- The Social Network : Drame
@@ -220,7 +222,7 @@ VALUES
   (28, 12), -- La La Land : Romance
   (29, 2), (29, 12), -- Eternal Sunshine of the Spotless Mind : Drame, Romance
   (30, 11), (30, 6), -- The Truman Show : Comédie, Aventure
-  (31, 4), (31, 6), (31, 1); -- Spider-Man (2002) : Action, Aventure, Fantastique
+  (31, 4), (31, 6), (31, 8); -- Spider-Man (2002) : Action, Aventure, Fantastique
 
 
 
