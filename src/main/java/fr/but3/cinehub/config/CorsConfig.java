@@ -19,6 +19,7 @@ public class CorsConfig {
         config.addAllowedOrigin("http://cinehub-front.s3-website-us-east-1.amazonaws.com"); // Remplacez "*" par l'URL de votre front-end
         config.addAllowedOrigin("http://localhost:8000"); 
         config.addAllowedOrigin("http://cinehub.ovh");
+        config.addAllowedOrigin("https://cinehub.ovh");
         config.addAllowedOrigin("http://cinehub.ovh.s3-website-us-east-1.amazonaws.com");  
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
