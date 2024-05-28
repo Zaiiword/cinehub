@@ -31,6 +31,12 @@ import fr.but3.cinehub.repository.ReviewRepository;
 import fr.but3.cinehub.repository.UserRepository;
 import fr.but3.cinehub.service.MovieRecommendationService;
 
+/**
+ * This class provides the controller for movie-related operations.
+ * <p>
+ * It handles HTTP requests for operations such as retrieving all genres and getting movie recommendations for a user.
+ * </p>
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/movie")
@@ -51,12 +57,30 @@ public class MovieController {
     @Autowired
     MovieRecommendationService movieRecommendationService;
 
+    
+    /**
+     * Retrieves all movies.
+     * <p>
+     * This method handles HTTP GET requests for retrieving all movies.
+     * </p>
+     *
+     * @return a ResponseEntity containing a list of all movies and an HTTP status code
+     */
     @GetMapping("")
     public ResponseEntity<List<Movie>> getAll(){
         List<Movie> CreneauDisponibles = (List<Movie>) movieRepository.findAll();
         return new ResponseEntity<>(CreneauDisponibles, HttpStatus.OK);
     }
 
+    /**
+     * Deletes a movie by its ID.
+     * <p>
+     * This method handles HTTP DELETE requests for deleting a movie by its ID. Only an admin can delete a movie.
+     * </p>
+     *
+     * @param id the ID of the movie to delete
+     * @return a ResponseEntity containing an HTTP status code
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable("id") Long id) {
 
@@ -77,12 +101,30 @@ public class MovieController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    /**
+     * Searches for movies based on a query string.
+     * <p>
+     * This method handles HTTP GET requests for searching movies. It finds movies whose names contain the query string, ignoring case.
+     * </p>
+     *
+     * @param query the query string to search for in movie names
+     * @return a ResponseEntity containing a list of matching movies and an HTTP status code
+     */
     @GetMapping("/search")
     public ResponseEntity<List<Movie>> searchMovies(@RequestParam("q") String query) {
         List<Movie> movies = movieRepository.findByNameContainingIgnoreCase(query);
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
 
+    /**
+     * Retrieves a movie by its ID.
+     * <p>
+     * This method handles HTTP GET requests for retrieving a movie by its ID.
+     * </p>
+     *
+     * @param id the ID of the movie to retrieve
+     * @return a ResponseEntity containing the movie and an HTTP status code, or an HTTP status code of NOT_FOUND if the movie does not exist
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Movie> getById(@PathVariable("id") Long id) {
         Optional<Movie> CreneauDisponible = movieRepository.findById(id);
@@ -92,6 +134,15 @@ public class MovieController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Retrieves a summary of all movies, with an optional limit on the number of movies returned.
+     * <p>
+     * This method handles HTTP GET requests for retrieving a summary of all movies.
+     * </p>
+     *
+     * @param limit an optional parameter specifying the maximum number of movies to return
+     * @return a ResponseEntity containing a list of movie summaries and an HTTP status code
+     */
     @GetMapping("/summary")
     public ResponseEntity<List<MovieSummary>> getAllSummary(@RequestParam(required = false) Integer limit){
         List<Movie> movies = (List<Movie>) movieRepository.findAll();
@@ -113,13 +164,31 @@ public class MovieController {
         return new ResponseEntity<>(summaries, HttpStatus.OK);
     }
 
+    /**
+     * Adds a new movie.
+     * <p>
+     * This method handles HTTP POST requests for adding a new movie.
+     * </p>
+     *
+     * @param newMovie the new movie to add
+     * @return a ResponseEntity containing the added movie and an HTTP status code
+     */
     @PostMapping("")
     public ResponseEntity<Movie> addMovie(@RequestBody Movie newMovie) {
         Movie movie = movieRepository.save(newMovie);
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
 
-
+    /**
+     * Handles the submission of a review for a movie.
+     * <p>
+     * This method handles HTTP POST requests for submitting a review for a movie.
+     * </p>
+     *
+     * @param id the ID of the movie to review
+     * @param reviewRequest the review to submit
+     * @return a ResponseEntity containing the submitted review and an HTTP status code
+     */
     @PostMapping("/{id}/review")
     public ResponseEntity<Review> handleCommentSubmit(@PathVariable String id, @RequestBody ReviewRequest reviewRequest) {
         System.out.println(reviewRequest);
@@ -145,7 +214,15 @@ public class MovieController {
         
     }
 
-
+    /**
+     * Toggles the like status of a review.
+     * <p>
+     * This method handles HTTP PATCH requests for toggling the like status of a review.
+     * </p>
+     *
+     * @param idReview the ID of the review to toggle the like status of
+     * @return a ResponseEntity containing the updated review and an HTTP status code
+     */
     @PatchMapping("/review/{idReview}")
     public ResponseEntity<Review> toggleReviewLike(@PathVariable("idReview") Long idReview) {
 
@@ -168,7 +245,15 @@ public class MovieController {
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
-    
+    /**
+     * Deletes a review by its ID.
+     * <p>
+     * This method handles HTTP DELETE requests for deleting a review by its ID.
+     * </p>
+     *
+     * @param idReview the ID of the review to delete
+     * @return a ResponseEntity containing an HTTP status code
+     */
     @DeleteMapping("/review/{idReview}")
     public ResponseEntity<?> deleteReview(@PathVariable Long idReview) {
          // allow only admin 
@@ -182,7 +267,16 @@ public class MovieController {
         return ResponseEntity.ok().build();
     }
 
-    
+    /**
+     * Updates a movie by its ID.
+     * <p>
+     * This method handles HTTP PATCH requests for updating a movie by its ID.
+     * </p>
+     *
+     * @param id the ID of the movie to update
+     * @param updatedMovie the updated movie
+     * @return a ResponseEntity containing the updated movie and an HTTP status code
+     */
     @PatchMapping("/{id}")
     public ResponseEntity<Movie> updateMovie(@PathVariable("id") Long id, @RequestBody Movie updatedMovie) {
          // allow only admin 
@@ -216,6 +310,14 @@ public class MovieController {
         return new ResponseEntity<>(movie, HttpStatus.OK);
     }
     
+    /**
+    * Retrieves all genres.
+    * <p>
+    * This method handles HTTP GET requests for retrieving all genres.
+    * </p>
+    *
+    * @return a ResponseEntity containing a list of all genres and an HTTP status code
+    */
     @GetMapping("/genres")
     public ResponseEntity<List<Genre>> getAllGenres() {
         List<Genre> genres = (List<Genre>) genreRepository.findAll();
@@ -223,7 +325,15 @@ public class MovieController {
     }
 
    
-
+    /**
+     * Retrieves movie recommendations for a user by their ID.
+     * <p>
+     * This method handles HTTP GET requests for retrieving movie recommendations for a user.
+     * </p>
+     *
+     * @param userId the ID of the user to get recommendations for
+     * @return a ResponseEntity containing a list of recommended movies and an HTTP status code
+     */
     @GetMapping("/recommendations/{userId}")
     public ResponseEntity<List<Movie>> getRecommendations(@PathVariable("userId") Long userId) {
         List<Movie> recommendedMovies = movieRecommendationService.recommendMovies(userId, 3);
