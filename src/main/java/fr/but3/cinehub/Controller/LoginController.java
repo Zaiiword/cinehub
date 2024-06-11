@@ -14,6 +14,12 @@ import fr.but3.cinehub.config.JwtTokenProvider;
 import fr.but3.cinehub.entity.JwtResponse;
 import fr.but3.cinehub.entity.LoginDto;
 
+/**
+ * This class provides the controller for login operations.
+ * <p>
+ * It handles HTTP POST requests for user authentication and JWT token generation.
+ * </p>
+ */
 @RestController
 @CrossOrigin(origins = "https://cinehub.ovh")
 public class LoginController {
@@ -24,11 +30,28 @@ public class LoginController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+
+    /**
+     * Constructs a new LoginController with the given AuthenticationManager and JwtTokenProvider.
+     *
+     * @param authenticationManager the AuthenticationManager to use for authenticating users
+     * @param jwtTokenProvider the JwtTokenProvider to use for generating JWT tokens
+     */
     public LoginController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+    /**
+     * Authenticates a user and generates a JWT token.
+     * <p>
+     * This method handles HTTP POST requests for user authentication. It authenticates the user with the provided
+     * username and password, generates a JWT token for the authenticated user, and returns the token in a JwtResponse.
+     * </p>
+     *
+     * @param loginDto the data transfer object containing the username and password for authentication
+     * @return a ResponseEntity containing a JwtResponse with the generated JWT token, or an error message if authentication fails
+     */
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody LoginDto loginDto) {
         try {

@@ -1,5 +1,8 @@
 package fr.but3.cinehub.entity;
 
+/**
+ * The ReviewRequest class represents a request to review a movie.
+ */
 public class ReviewRequest {
     private Long userId;
     private float rating;

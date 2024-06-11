@@ -16,6 +16,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+/**
+ * Service for recommending movies to a user.
+ *
+ * @Service annotation is used with classes that provide some business functionalities.
+ */
 @Service
 public class MovieRecommendationService {
 
@@ -29,7 +34,14 @@ public class MovieRecommendationService {
     private GenreRepository genreRepository;
 
 
-
+    /**
+     * Recommends movies to a user based on their rates and the genres of the movies a given user has reviewed.
+     * It's based on an K-NN algorithm. The distance between the rating of the movies, user's genre ratings and the genres of each movie is calculated to recommend the bests ones.
+     * 
+     * @param userId the ID of the user.
+     * @param k the number of movies to recommend.
+     * @return a list of recommended movies.
+     */
     public List<Movie> recommendMovies(Long userId, int k) {
         User user = userRepository.findById(userId).orElse(null);
         if (user == null || user.getReviews().isEmpty()) {
@@ -76,6 +88,13 @@ public class MovieRecommendationService {
             .collect(Collectors.toList());
     }
     
+    /**
+     * Calculates the distance between a movie rating, a user's genre ratings and a movie's genres.
+     *
+     * @param userGenreRatings the user's average ratings for each genre.
+     * @param movie the movie.
+     * @return the distance.
+     */
     private double calculateDistance(Map<Genre, Double> userGenreRatings, Movie movie) {
         double distance = 0.0;
         List<Genre> movieGenres = movie.getGenres();
