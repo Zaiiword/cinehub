@@ -11,16 +11,12 @@ public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
-        // Create a new CORS configuration source
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-         // Set the allowed origins, headers, and methods for the CORS configuration
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://cinehub-front.s3-website-us-east-1.amazonaws.com"); // Remplacez "*" par l'URL de votre front-end
-        config.addAllowedOrigin("http://localhost:8000"); 
+        config.addAllowedOrigin("http://localhost:8000");
+        config.addAllowedOrigin("http://localhost:8081");
         config.addAllowedOrigin("http://cinehub.ovh");
-        config.addAllowedOrigin("https://cinehub.ovh");
-        config.addAllowedOrigin("http://cinehub.ovh.s3-website-us-east-1.amazonaws.com");  
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
